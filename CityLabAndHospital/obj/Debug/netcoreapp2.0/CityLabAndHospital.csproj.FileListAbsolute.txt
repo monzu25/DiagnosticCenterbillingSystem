@@ -1,0 +1,124 @@
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\IDB-PC13\Source\Repos\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+E:\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\Tuheen Monzu\C# R-35 Exam-10\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+G:\Full MVC\FinalProject\1239662(MD MONZU)\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\1239662\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\Select.Html.dep
+C:\Users\Tuheen Monzu\Desktop\Exam11 and Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+F:\My Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+F:\My Project\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\Select.Html.dep
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Administrator\Desktop\Tuheen Monzu\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\Select.Html.dep
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+G:\FinalProject\2018-11-22\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\Select.Html.dep
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.deps.json
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.json
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.runtimeconfig.dev.json
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\bin\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csproj.CoreCompileInputs.cache
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfoInputs.cache
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.AssemblyInfo.cs
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.dll
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.pdb
+C:\Users\Tuheen Monzu\Desktop\MyFinalProject\CityLabAndHospital\CityLabAndHospital\CityLabAndHospital\obj\Debug\netcoreapp2.0\CityLabAndHospital.csprojAssemblyReference.cache

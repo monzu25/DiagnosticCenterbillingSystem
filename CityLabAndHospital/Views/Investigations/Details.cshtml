@@ -1,0 +1,44 @@
+﻿@model CityLabAndHospital.Models.Db.Investigations
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Investigations</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SlNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SlNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TestGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TestGroup)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReportGroup)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fee)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-success" asp-route-id="@Model.TestName">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

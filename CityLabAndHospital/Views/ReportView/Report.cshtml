@@ -1,0 +1,414 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="TestModule">
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<head>
+    @*CSS Files*@
+
+    <link href="~/css/site.css" rel="stylesheet" />
+    @*CSS Files*@
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    @*<script src="~/js/angularjs/angular.min.js"></script>*@
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+
+
+
+    @*<script src="~/js/angularjs/angular.min.js"></script>*@
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="~/js/angularjs/angular-routes.js"></script>
+    <script src="~/js/angularjs/angular-resource.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+
+    <script src="~/pdf/sprintf.js"></script>
+    <script src="~/pdf/jspdf.js"></script>
+    <script src="~/pdf/base64.js"></script>
+    @*
+        <script src="~/pdf/sprintf.js"></script>
+        <script src="~/pdf/jspdf.js"></script>
+        <script src="~/pdf/base64.js"></script>*@
+
+
+    <script>
+        var model = { user: "IDB" };
+        var app = angular.module("TestModule", ["ngRoute", "ngResource"]);
+
+        app.config(function ($routeProvider, $locationProvider) {
+            $routeProvider.when("/report", {
+                templateUrl: "/home/about"
+            });
+
+
+            $routeProvider.otherwise({
+                redirectTo: "/home/asds"
+            });
+        });
+
+        app.service('MyService', function ($http, $q) {
+            this.Service = function (method, url1, data1) {
+                var d = $q.defer();
+                $http({
+                    method: method,
+                    url: url1,
+                    data: data1,
+                }).then(function successCallback(response) {
+                    res = response.data;
+                    d.resolve(res);
+                }, function errorCallback(response) {
+                    d.reject(response);
+                });
+                res = d.promise;
+                return res;
+            }
+        });
+
+        app.controller("TestController", function ($scope, $http, MyService) {
+            $http.get('/api/TestInfoApi/').success(function (data, status, headers, config) {
+                $scope.allTest = data;
+                //alert(data);
+            }).error(function (data, status, headers, config) {
+                //alert("An error Occured")
+            });
+
+
+
+            //var selected = undefined
+            $http.get('/api/InvestigationMastersApi/GetVoucherNo').success(function (data, status, headers, config) {
+                $scope.allvoucherNo = data;
+                //alert(data);
+            }).error(function (data, status, headers, config) {
+                //alert("An error Occured")
+            });
+
+            $scope.getselectval = function () {
+                //alert($scope.selitem);
+                b = MyService.Service("GET", '/api/InvestigationMastersApi/' + $scope.voucherNo, '')
+                b.then(function (dt) {
+                    $scope.patientName = dt.patientName;
+                    $scope.guardian = dt.guardian;
+                    $scope.paidAmt = dt.paidAmt;
+                    $scope.dueAmt = dt.dueAmt;
+                });
+            }
+
+            $scope.createId = function () {
+
+                $http({
+                    method: 'GET',
+                    url: '/api/CashReceiveDetailsApi/CreateVoucher'
+                }).then(function successCallback(response) {
+
+
+                    cid = response.data;
+                    if (cid == null)
+                        cid = 1;
+                    else
+                        cid = parseInt(cid);
+                    if (cid < 10) cid = "0000" + cid
+                    else if (cid < 100) cid = "000" + cid
+                    else if (cid < 1000) cid = "00" + cid
+                    else if (cid < 10000) cid = "0" + cid
+                    $scope.paidVoucher = cid;
+
+                }, function errorCallback(response) {
+
+                });
+            }
+
+            data = [];
+            model.lines = data;
+            $scope.todos = [];
+            $scope.EmpList = [];
+
+            $scope.sl = 0;
+            model.profile = [];
+            $scope.vno = model;
+            $scope.index = 0;
+            $scope.save = true;
+            $scope.delete = false;
+            $scope.update = false;
+            $scope.drName = [];
+            $scope.createId();
+
+            $scope.TestVoucherExists = function () {
+                b = MyService.Service("GET", '/api/InvestigationMastersApi/InvestigationMasterExists?id=' + $scope.voucherNo, '')
+                b.then(function (r) {
+                    //alert(r)
+                })
+            }
+
+
+            var date = new Date();
+            $scope.paidDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+
+
+
+            $scope.saveItems = function () {
+                nsl = 1;
+                var flag = "1";
+                var f = MyService.Service("GET", '/api/InvestigationMastersApi', '');
+                f.then(function (response) {
+                    flag = response;
+                    var formMaster = {
+                        voucherNo: $scope.billNo,
+                        billDate: $scope.billDate,
+                        patientName: $scope.patientName,
+                        guardian: $scope.guardianName,
+                        address: $scope.address,
+                        mobile: $scope.phoneNo,
+                        doctorName: $scope.selitem,
+                        dotorId: $scope.dotorId,
+                        dob: $scope.birthDate,
+                        delivaryDate: $scope.delivaryDate,
+                        gender: $scope.gender,
+                        doctorId: parseInt($scope.selitem),
+                        totalAmt: parseFloat($scope.totalAmt),
+                        discount: parseFloat($scope.discount),
+                        netAmt: parseFloat($scope.netAmt),
+                        paidAmt: parseFloat($scope.paidAmt),
+                        dueAmt: parseFloat($scope.dueAmt)
+
+                    }
+                    //alert(JSON.stringify(formMaster));
+                    var master = MyService.Service("POST", '/api/InvestigationMastersApi', formMaster, 'application/json');//$scope.VoucherExists();// returns 1 or 0
+                    master.then(function () {
+                        angular.forEach($scope.todos, function (value, key) {
+                            nsl++;
+                            var forsmetails = {
+                                voucherNo: $scope.billNo,
+                                date: $scope.billDate,
+                                slNo: value.slNo,
+                                testName: value.testName,
+                                testGroup: value.testGroup,
+                                amount: value.amount,
+
+                                Fee: value.amount,
+                            };
+                            //alert("here:" + JSON.stringify(forsmetails));
+                            var details = MyService.Service("POST", '/api/InvestigationDetailsApi', forsmetails, 'application/json');//$scope.VoucherExists();// returns 1 or 0
+                            details.then(function () {
+                                if (nsl > $scope.todos.length) {
+                                    $scope.todos = [];
+                                    $scope.createId();
+                                    $("#output").html("Operation executed...").css("background-color", "green").slideUp("fast").slideDown("slow").delay(10000).slideUp("slow");
+                                    $("select").val("select");
+                                    $("#VoucherNo").val("");
+                                    $("#Date").val("");
+                                    $("#ItemCode").val("");
+                                }
+                            });
+
+                        });
+
+                    });
+
+                });
+            };
+
+
+            $scope.AddData = function () {
+                $scope.sl++;
+                alert("this Is working");
+                $scope.EmpList.push({
+                    slNo: $scope.sl,
+                    ledgerName: $scope.ledgerName,
+                    amount: $scope.amount
+
+                });
+
+                alert($scope.sl);
+                $scope.CalculateTotal();
+
+            };
+
+            $scope.removeLineItem = function (a) {
+
+                a = parseInt(a) - 1;
+                $scope.todos.splice(a, 1);
+                sl = 0
+                angular.forEach($scope.todos, function (value, key) {
+                    value.slNo = ++sl;
+                });
+                $scope.sl = sl;
+            }
+
+
+            $scope.AddSingleToArray = function (a) {
+
+                $http.get('/api/TestInfoApi/' + a).success(function (data, status, headers, config) {
+                    $scope.sl++;
+                    $scope.todos.push({
+                        slNo: $scope.sl,
+                        testName: data.testName,
+                        testGroup: data.testGroup,
+                        amount: data.fee
+                    });
+
+                    $scope.CalculateTotal();
+
+                }).error(function (data, status, headers, config) {
+                    alert("An error Occured")
+                });
+
+            }
+
+            $scope.CalculateTotal = function () {
+                var total = 0;
+                angular.forEach($scope.todos, function (value, key) {
+                    total = parseInt(total) + parseInt(value.amount);
+                });
+                $scope.totalAmt = total;
+                $scope.Totalling();
+            }
+            $scope.Totalling = function () {
+                $scope.netAmt = $scope.totalAmt - ($scope.totalAmt * $scope.discount) / 100;
+                $scope.dueAmt = $scope.netAmt - $scope.paidAmt;
+            }
+
+
+            $scope.savePdfSample = function () {
+
+                //alert("This is working")
+                var pdf = new jsPDF('p', 'pt', 'a4');
+                var canvas = pdf.canvas;
+                //canvas.height = 72 * 15;
+                //canvas.width = 72 * 15;
+                var html = $("#myModal").html();
+                var options = {
+                    pagesplit: true
+                };
+                html2pdf(html, pdf, function (pdf) {
+                    pdf.save('PatientCopy.pdf');
+                });
+            }
+
+        });
+
+
+
+    </script>
+
+</head>
+<body ng-controller="TestController" style="display:block">
+    <div id="TestCtrl" style="background-color:#00162A;margin-top:5px;height:650px">
+        <div class="container">
+            <center><h2 style="color:white">Due Received </h2></center>
+            <br />
+            <br />
+            <div class="row" style="height:15px">
+                <div class="col-sm-6">
+                    <label class="col-sm-4" style="text-align:right;color:white">Investigation ID:&nbsp  </label>
+                    <select class="col-sm-4" type="text" id="doctorName" ng-options="voucherNo for voucherNo in allvoucherNo" ng-model="voucherNo" ng-change="getselectval()">
+                        <option value="">--Select A Name--</option>
+                    </select>
+
+
+
+                </div>
+                <div class="col-sm-6">
+                    <label class="col-sm-3" style="color:white;text-align:right"> Voucher NO: &nbsp </label>
+                    <input class="col-sm-4" type="text" id="birthDate" ng-model="paidVoucher" />
+
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-sm-6">
+                        <label class="col-sm-4" style="text-align:right;color:white">Patient Name: &nbsp </label>
+                        <input class="col-sm-4" type="text" id="patientName" ng-model="patientName" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-3" style="text-align:right;color:white">Date:&nbsp</label>
+                        <input class="col-sm-4" type="text" id="paidDate" ng-model="paidDate" />
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-sm-6">
+                        <label class="col-sm-4" style="text-align:right;color:white">Guardian:</label>
+                        <input class="col-sm-4" type="text" id="guardian" ng-model="guardian" />
+                    </div>
+
+
+                </div>
+            </div>
+
+            <br />
+            <hr />
+            <br />
+            <div class="row" style="height:15px">
+
+                <div class="col-sm-8">
+                    <label class="col-sm-2" style="text-align:right;color:white">Paid Amt: &nbsp</label>
+                    <input class="col-sm-3" type="text" id="paidAmt" ng-model="paidAmt" />
+                    <label class="col-sm-2" style="text-align:right;color:white">Due Amt: &nbsp</label>
+                    <input class="col-sm-3" type="text" id="paidAmt" ng-model="dueAmt" />
+                    <label class="col-sm-1" style="text-align:right;color:white"></label>
+                    <input class="col-sm-1 btn btn-success" type="button" id="button" ng-model="button" ng-change="AddData()" value="Add" />
+                </div>
+
+
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-sm-8" style="height:250px;background-color:white;margin-left:20px">
+                    <table class="table table-sm table-striped" style="border:1px" id="Details">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <th>Investigation ID</th>
+                                <th>Patient Name</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="Emp in EmpList" style="padding:5px;height:10px">
+                                <td> {{ Emp.slNo }}</td>
+                                <td>{{ Emp.paidAmd }}</td>
+                                <td>{{ Emp.dueAmt }}</td>
+                                <td><input type="button" style="background-color:#00162A" value="Remove" id="remove" class="btn btn-success" ng-click="removeLineItem(a.slNo)" /></td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <div class="col-sm-3">
+                    <label class="col-sm-6" style="text-align:right;color:white;font-weight:bold;font-size:20px">Total Amount: &nbsp</label>
+                    <input class="col-sm-6" style="font-weight:bold;font-size:20px" type="text" id="paidAmt" ng-model="paidAmt" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

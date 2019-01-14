@@ -1,0 +1,44 @@
+﻿@model CityLabAndHospital.Models.Db.CashReceiveMaster
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h4>Cash Receive Master Details</h4>
+
+<div class="table table-bordered table-striped">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestigationId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InvestigationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PatientName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.VoucherNo">Edit</a> |
+    <a class="btn btn-success" asp-action="Index">Back to List</a>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

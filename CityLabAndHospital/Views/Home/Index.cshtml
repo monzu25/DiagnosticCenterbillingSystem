@@ -1,0 +1,773 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="TestModule">
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<head>
+    @*CSS Files*@
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    @*<script src="~/js/angularjs/angular.min.js"></script>*@
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    @*<script src="~/js/angularjs/angular.min.js"></script>*@
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="~/js/angularjs/angular-routes.js"></script>
+    <script src="~/js/angularjs/angular-resource.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+
+    <script src="~/pdf/sprintf.js"></script>
+    <script src="~/pdf/jspdf.js"></script>
+    <script src="~/pdf/base64.js"></script>
+
+    <script>
+        var model = { user: "IDB" };
+        var app = angular.module("TestModule", ["ngRoute", "ngResource"]);
+
+        app.config(function ($routeProvider, $locationProvider) {
+            $routeProvider.when("/report", {
+                templateUrl: "/home/about"
+            });
+
+
+            $routeProvider.otherwise({
+                redirectTo: "/home/asds"
+            });
+        });
+
+        app.service('MyService', function ($http, $q) {
+            this.Service = function (method, url1, data1) {
+                var d = $q.defer();
+                $http({
+                    method: method,
+                    url: url1,
+                    data: data1,
+                }).then(function successCallback(response) {
+                    res = response.data;
+                    d.resolve(res);
+                }, function errorCallback(response) {
+                    d.reject(response);
+                });
+                res = d.promise;
+                return res;
+            }
+        });
+
+        app.controller("TestController", function ($scope, $http, MyService) {
+            $http.get('/api/TestInfoApi/').success(function (data, status, headers, config) {
+                $scope.allTest = data;
+                //alert(data);
+            }).error(function (data, status, headers, config) {
+                //alert("An error Occured")
+            });
+
+
+
+
+            $http.get('/api/DoctorsApi/GetDoctorsIds').success(function (data, status, headers, config) {
+                $scope.drName = data;
+                //alert(data);
+            }).error(function (data, status, headers, config) {
+                //alert("An error Occured")
+            });
+
+
+
+            $scope.getselectval = function () {
+                //alert($scope.selitem);
+                b = MyService.Service("GET", 'api/doctorsapi/' + $scope.selitem, '')
+                b.then(function (dt) {
+                    $scope.selectedvalues = dt.doctorName;
+                    $scope.qualification = dt.qualification;
+                    $scope.address1 = dt.address;
+                    $scope.mobile1 = dt.mobile;
+                });
+            }
+
+
+
+
+            $scope.createId = function () {
+                $http({
+                    method: 'GET',
+                    url: '/api/InvestigationMastersApi/CreateVoucher'
+                }).then(function successCallback(response) {
+                    cid = response.data;
+                    if (cid == null)
+                        cid = 1;
+                    else
+                        cid = parseInt(cid);
+                    if (cid < 10) cid = "0000" + cid
+                    else if (cid < 100) cid = "000" + cid
+                    else if (cid < 1000) cid = "00" + cid
+                    else if (cid < 10000) cid = "0" + cid
+                    $scope.billNo = cid;
+
+                }, function errorCallback(response) {
+
+                });
+            }
+
+
+
+            data = [];
+            model.lines = data;
+            $scope.todos = [];
+
+            $scope.sl = 0;
+            model.profile = [];
+            $scope.vno = model;
+            $scope.index = 0;
+            $scope.save = true;
+            $scope.delete = false;
+            $scope.update = false;
+            $scope.drName = [];
+            $scope.createId();
+
+
+
+
+
+
+
+
+
+
+            $scope.loading = function (a) {
+                $scope.save = true;
+                $scope.delete = false;
+                $scope.update = false;
+                $scope.sub_id = "";
+                $scope.sub_name = "";
+            }
+
+
+            $scope.showProfile = function () {
+                if ($scope.chkprofile == false) {
+                    model.profile = [];
+                    $scope.todos = [];
+                    //save true, update,delete false
+                    $scope.save = true;
+                    $scope.delete = false;
+                    $scope.update = false;
+                    $("input[type='text']").val("");
+                    $("select").val("select");
+                    $scope.sl = 0;
+                    $scope.createId();
+                }
+                else {
+
+                    $scope.save = false;
+                    $scope.delete = true;
+                    $scope.update = true;
+                    b = MyService.Service("GET", '/api/InvestigationMastersApi/GetVouchers', '')
+                    b.then(function (r) {
+                        alert(b);
+                        $scope.profile = r;
+                    });
+
+                }
+            }
+
+
+            //data insert Area//
+            $scope.showData = function () {
+                //alert('/api/InvestigationMastersApi/' + $scope.cmbprofile);
+                b = MyService.Service("GET", '/api/InvestigationMastersApi/' + $scope.cmbprofile, '')
+                b.then(function (dt) {
+                    $scope.billNo = dt.voucherNo;
+                    $scope.billDate = dt.date;
+                    $scope.patientName = dt.patientName;
+                    $scope.guardianName = dt.guardian;
+                    $scope.address = dt.address;
+                    $scope.phoneNo = dt.mobile;
+                    $scope.birthDate = dt.birthDate;
+                    $scope.gender = dt.gender;
+                    $scope.selectedvalues = dt.doctorId;
+                    $scope.totalAmt = dt.total;
+                    $scope.discount = dt.discount;
+                    $scope.netAmt = dt.netAmt;
+                    $scope.paidAmt = dt.paidAmt;
+                    $scope.dueAmt = dt.dueAmt;
+                    $scope.selitem = dt.doctorId;
+
+                    $scope.getselectval();
+                });
+                //alert('/api/InvestigationDetailsApi/GetInvestigationByVrNo?voucherno=' + $scope.cmbprofile);
+                c = MyService.Service("GET", '/api/InvestigationDetailsApi/GetInvestigationByVrNo?voucherno=' + $scope.cmbprofile, '')
+                c.then(function (dt) {
+                    $scope.todos = dt;
+                    alert(JSON.stringify($scope.todos));
+                    $scope.sl = $scope.todos[$scope.todos.length - 1].slNo;
+                });
+            }
+
+
+
+
+
+
+            $scope.TestVoucherExists = function () {
+                b = MyService.Service("GET", '/api/InvestigationMastersApi/InvestigationMasterExists?id=' + $scope.voucherNo, '')
+                b.then(function (r) {
+                    alert(r)
+                })
+            }
+
+
+            //$scope.VoucherExists = function () {
+
+            //    b = MyService.Service("GET", '/api/InvestigationMastersApi/InvestigationMasterExists?id=' + $scope.voucherNo, '')
+            //    b.then(function (r) {
+            //        return r;
+            //    })
+
+            //}
+
+            //function Ctrl($scope) {
+            //    $scope.billDate = new Date();
+            //}
+
+
+
+            var date = new Date();
+            $scope.billDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+
+
+
+            $scope.saveItems = function () {
+                nsl = 1;
+                var flag = "1";
+                var f = MyService.Service("GET", '/api/InvestigationMastersApi', '');
+                f.then(function (response) {
+                    flag = response;
+                    var formMaster = {
+                        voucherNo: $scope.billNo,
+                        date: $scope.billDate,
+                        patientName: $scope.patientName,
+                        guardian: $scope.guardianName,
+                        address: $scope.address,
+                        mobile: $scope.phoneNo,
+                        birthDate: $scope.birthDate,
+                        gender: $scope.gender,
+                        doctorId: parseInt($scope.selitem),
+                        total: parseFloat($scope.totalAmt),
+                        discount: parseFloat($scope.discount),
+                        netAmt: parseFloat($scope.netAmt),
+                        paidAmt: parseFloat($scope.paidAmt),
+                        dueAmt: parseFloat($scope.dueAmt)
+
+                    }
+                    alert(JSON.stringify(formMaster));
+                    var master = MyService.Service("POST", '/api/InvestigationMastersApi', formMaster, 'application/json');//$scope.VoucherExists();// returns 1 or 0
+                    master.then(function () {
+                        angular.forEach($scope.todos, function (value, key) {
+                            nsl++;
+                            var formDetails = {
+                                voucherNo: $scope.billNo,
+                                date: $scope.billDate,
+                                slNo: value.slNo,
+                                testName: value.testName,
+                                testGroup: value.testGroup,
+                                amount: value.amount,
+
+                                Fee: value.amount,
+                            };
+                            alert("here:" + JSON.stringify(formDetails));
+                            var details = MyService.Service("POST", '/api/InvestigationDetailsApi', formDetails, 'application/json');//$scope.VoucherExists();// returns 1 or 0
+                            details.then(function () {
+                                if (nsl > $scope.todos.length) {
+                                    $scope.todos = [];
+                                    $scope.createId();
+                                    $("#output").html("Operation executed...").css("background-color", "green").slideUp("fast").slideDown("slow").delay(10000).slideUp("slow");
+                                    $("select").val("select");
+                                    $("#VoucherNo").val("");
+                                    $("#Date").val("");
+                                    $("#ItemCode").val("");
+                                }
+                            });
+
+                        });
+
+                    });
+
+                });
+            };
+
+
+
+
+
+            $scope.updateItems = function () {
+                //alert("Its working")
+                var flag = "1";
+                if ($scope.chkprofile == false) {
+                    $("#output").html("Please click profile and select a Voucher").css("background-color", "black").slideUp("fast").slideDown("slow").delay(10000).slideUp("slow");
+                    return;
+                }
+
+                var details = MyService.Service("DELETE", '/api/InvestigationDetailsApi/' + $scope.cmbprofile, "", 'application/json');
+                details.then(function () {
+
+                    var master = MyService.Service("DELETE", '/api/InvestigationMastersApi/' + $scope.cmbprofile, "", 'application/json');
+                    master.then(function () {
+
+                        $scope.saveItems();
+                    })
+
+                })
+
+
+            };
+
+
+            $scope.deleteItems = function () {
+
+
+                var details = MyService.Service("DELETE", '/api/InvestigationDetailsApi/' + $scope.cmbprofile, "", 'application/json');
+
+                details.then(function () {
+                    var master = MyService.Service("DELETE", '/api/InvestigationMastersApi/' + $scope.cmbprofile, "", 'application/json');
+
+                    master.then(function () {
+                        $("#output").html("Successfully Deleted").css("background-color", "black").slideUp("fast").slideDown("slow").delay(10000).slideUp("slow");
+                        $scope.chkprofile = false;
+                    })
+                })
+            }
+
+
+
+
+            $scope.removeLineItem = function (a) {
+
+                a = parseInt(a) - 1;
+                $scope.todos.splice(a, 1);
+                sl = 0
+                angular.forEach($scope.todos, function (value, key) {
+                    value.slNo = ++sl;
+                });
+                $scope.sl = sl;
+            }
+
+
+
+
+
+            $scope.AddSingleToArray = function (a) {
+
+                $http.get('/api/TestInfoApi/' + a).success(function (data, status, headers, config) {
+                    $scope.sl++;
+                    $scope.todos.push({
+                        slNo: $scope.sl,
+                        testName: data.testName,
+                        testGroup: data.testGroup,
+                        amount: data.fee
+                    });
+
+                    $scope.CalculateTotal();
+
+                }).error(function (data, status, headers, config) {
+                    alert("An error Occured")
+                });
+
+            }
+
+            $scope.CalculateTotal = function () {
+                var total = 0;
+                angular.forEach($scope.todos, function (value, key) {
+                    total = parseInt(total) + parseInt(value.amount);
+                });
+                $scope.totalAmt = total;
+                $scope.Totalling();
+            }
+            $scope.Totalling = function () {
+                $scope.netAmt = $scope.totalAmt - ($scope.totalAmt * $scope.discount) / 100;
+                $scope.dueAmt = $scope.netAmt - $scope.paidAmt;
+            }
+
+
+
+
+
+
+            $scope.savePdfSample = function () {
+
+                alert("This is working")
+                var pdf = new jsPDF('p', 'pt', 'a4');
+                var canvas = pdf.canvas;
+                // canvas.height = 72 * 15;
+                //canvas.width = 72 * 15;
+                var html = $("#myModal").html();
+                var options = {
+                    pagesplit: true
+                };
+                html2pdf(html, pdf, function (pdf) {
+                    pdf.save('PatientCopy.pdf');
+                });
+            }
+
+
+        });
+
+
+
+
+    </script>
+
+</head>
+<body ng-controller="TestController" type=post action="DisplayProduct.html">
+    <div id="TestCtrl" style="background-color:#00162A;margin-top:5px;height:700px">
+        <div class="container">
+            <br />
+            <div class="row" style="height:15px">
+                <div class="col-md-6" style="text-align:center;color:white">
+                    <label class="col-md-3" style="text-align:right;color:white">Check:</label>
+                    <input class="col-md-1" type="checkbox" ng_model="chkprofile" ng-change="showProfile()" />
+                    <select class="col-md-7" ng_model="cmbprofile" ng-change="showData()" ng-options="a for a in profile">
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Vou No:</label>
+                    <input class="col-md-2" type="text" id="billNo" ng-model="billNo" readonly placeholder="Auto" />
+                    <label class="col-md-2" style="text-align:right;color:white">Bill Date:</label>
+                    <input class="col-md-4" type="text" id="billDate" ng-model="billDate" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Dr.Name:</label>
+                    <input class="col-md-3" type="text" ng-model="selectedvalues" ng-change="selectedvalues" />
+                </div>
+            </div>
+
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-md-6">
+                        <label class="col-md-3 input-sm" style=" height:15px;text-align:right;color:white">Patient Name:</label>
+                        <input class="col-md-8" type="text" id="patientName" ng-model="patientName" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="color:white;text-align:right">Dr ID:</label>
+                        <select class="col-md-7 input-sm" type="text" id="drName" ng-options="s for s in drName" ng-model="selitem" ng-change="getselectval()">
+                            <option value="">--Select A Name--</option>
+                        </select>
+
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="text-align:right;color:white">Guardian:</label>
+                        <input class="col-md-8 input-sm" type="text" id="guardianName" ng-model="guardianName" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="text-align:right;color:white">Qualification:</label>
+                        <input class="col-md-7" type="text" id="qualification" ng-model="qualification" ng-change="qualification" />
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="text-align:right;color:white">Address:</label>
+                        <input class="col-md-8" id="address" ng-model="address" />
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="color:white;text-align:right">Address:</label>
+                        <input class="col-md-7"  id="address1" ng-model="address1" ng-change="address1" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="text-align:right;color:white">Phone:</label>
+                        <input class="col-md-8" type="text" id="phoneNo" ng-model="phoneNo" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="color:white;text-align:right">Cell No:</label>
+                        <input class="col-md-7" type="text" id="phoneNo1" ng-model="mobile1" ng-change="mobile1" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="row" style="height:15px">
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="text-align:right;color:white">Gender:</label>
+                        <select id="gender" class="col-md-3" style="height:26px" ng-model="gender">
+                            <option value="">--Select--</option>
+                            <option value="Male">Male</option>
+                            <option value="Femal">Femal</option>
+                            <option value="Femal">Baby</option>
+                            <option value="Femal">Others</option>
+                        </select>
+                        <label class="col-md-2" style="text-align:right;color:white">Age:</label>
+                        <input class="col-md-3" type="text" id="birthDate" ng-model="birthDate" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-md-3" style="color:white;text-align:right">Delevery Date:</label>
+                        <input class="col-md-4" type="date" id="deliveryDate" ng-model="deliveryDate" />
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <hr style="background-color:white" />
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-2 test-name-section-left">
+                        <div>
+                            @*<div style=" position:absolute; top:0; left:0; display:block">Test Name</div>*@
+                            <table id="mytable">
+                                <thead>
+                                    <tr style="font-size:16px; font-weight:bold; color:#c0392b;background-color:white">
+                                        <th style="text-align:center; position: -webkit-sticky; position: sticky;top: 0;background-color: #fff;font-size: 20px;">Test Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="test in allTest" id="testname-list">
+                                    <tr>
+                                        <td width="200"><a href="#" ng-click="AddSingleToArray(test.testName);" style="display:block;width:100%;color:white;text-align:center">{{test.testName}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" style="height:250px;overflow:scroll;background-color:white">
+                        <div>
+                            <table class="table table-sm table-striped" style="border:1px" id="Details">
+                                <thead>
+                                    <tr>
+                                        <th>Sl No</th>
+                                        <th>Test Name</th>
+                                        <th>Test Group</th>
+                                        <th>Test Fee</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="a in todos" style="padding:5px;height:10px">
+                                        <td>{{a.slNo}}</td>
+                                        <td>{{a.testName}}</td>
+                                        <td>{{a.testGroup}}</td>
+                                        <td>{{a.amount}}</td>
+                                        <td style="text-align:right"><input type="button" style="background-color:#00162A;text-align:right" value="Remove" id="remove" class="btn btn-info btn-sm" ng-click="removeLineItem(a.slNo)"/></td>
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row" style="height:25px">
+                            <label class="col-md-5" style="color:white;text-align:right">Total Amt:</label>
+                            <input class="col-md-6" type="text" id="totalAmt" ng-model="totalAmt" />
+                        </div>
+                        <br />
+                        <div class="row" style="height:25px">
+                            <label class="col-md-5" style="color:white;text-align:right">Discount %:</label>
+                            <input class="col-md-6" type="text" id="discount" ng-model="discount" ng-change="Totalling()" />
+                        </div>
+                        <br />
+                        <div class="row" style="height:25px">
+                            <label class="col-md-5" style="color:white;text-align:right">Net Amt:</label>
+                            <input class="col-md-6" type="text" id="netAmt" ng-model="netAmt" />
+                        </div>
+                        <br />
+                        <div class="row" style="height:25px">
+                            <label class="col-md-5" style="color:white;text-align:right">Paid Amt:</label>
+                            <input class="col-md-6" type="text" id="paidAmt" ng-model="paidAmt" ng-change="Totalling()" />
+                        </div>
+                        <br />
+                        <div class="row" style="height:25px">
+                            <label class="col-md-5" style="color:white;text-align:right">Due Amt:</label>
+                            <input class="col-md-6" type="text" id="dueAmt" ng-model="dueAmt" />
+                        </div>
+                        <br />
+
+                        <div class="container">
+                            <div class="row" style="margin-left:20px">
+                                <input type="button" value="Save" id="save" class="btn btn-success btn-sm" ng-model="save" ng-click="saveItems()" /> &amp;
+                                <input type="button" value="Delete" id="delete" class="btn btn-danger btn-sm" ng-model="delete" ng-click="deleteItems()" />&amp;
+                                <input type="button" value="Update" id="update" class="btn btn-info btn-sm" ng-model="update" ng-click="updateItems()" />
+                                <input type="button" value="Print" id="save" data-toggle="modal" ng-click="savePdfSample()" data-target="#myModal" class="btn btn-success btn-sm" ng-model="print" />
+                                @*<input type="button" value="Print" id="print" class="btn btn-info btn-sm" ng-model="print" ng-click="pdfreport1()" />*@
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="text-align:center">Bismiallah Hirrahmanir Rahim</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container" style="text-align:left">
+
+
+                        <div class="col-sm-8">
+                            <h4 style="text-align:center">Customer Copy</h4>
+                            <h3 style="text-align:center">City Lab And Hospital</h3>
+                            <hr />
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="col-sm-2">Voucher No:</label>
+                                <label class="col-sm-2">{{billNo}}</label>
+                                <label class="col-sm-2"></label>
+                                <label class="col-sm-1.5">Bill Date:</label>
+                                <label class="col-sm-1.5">{{billDate}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-md-2">Patient Name:</label>
+                                <label class="col-md-2">{{patientName}}</label>
+                                <label class="col-sm-2"></label>
+                                <label class="col-md-1.5">Delivery Date:</label>
+                                <label class="col-md-1.5">{{delivaryDate}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-md-2">Gender:</label>
+                                <label class="col-md-2">{{gender}}</label>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-md-2">Age:</label>
+                                <label class="col-md-2">{{birthDate}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-md-2">Phone:</label>
+                                <label class="col-md-2">{{phoneNo}}</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <table style="width:65%" class="table table-bordered table-responsive table-condensed">
+                                <tr style="background-color:#003366;color:white">
+                                    <th style="width:10%">Sl No</th>
+                                    <th>Test Name</th>
+                                    <th style="text-align:center;width:15%">Fee</th>
+                                </tr>
+
+                                <tr ng-repeat="a in todos">
+                                    <td>{{a.slNo}}</td>
+                                    <td>{{a.testName}}</td>
+                                    <td style="text-align:right">{{a.amount}}</td>
+                                </tr>
+
+
+
+                                <tr style="background-color:green">
+                                    <td colspan="2" style=text-align:right;font-weight:bold>Total</td>
+
+                                    <td style=text-align:right;>{{totalAmt}}</td>
+                                </tr>
+                                <tr style="background-color:gray">
+                                    <td colspan="2" style=text-align:right;font-weight:bold>Discount</td>
+
+                                    <td style=text-align:right;>{{discount}}</td>
+                                </tr>
+                                <tr style="background-color:gray">
+                                    <td colspan="2" style=text-align:right;font-weight:bold>NetAmt</td>
+
+                                    <td style=text-align:right;>{{netAmt}}</td>
+                                </tr>
+                                <tr style="background-color:gray">
+                                    <td colspan="2" style=text-align:right;font-weight:bold>PaidAmt</td>
+
+                                    <td style=text-align:right;>{{paidAmt}}</td>
+                                </tr>
+                                <tr style="background-color:gray">
+                                    <td colspan="2" style=text-align:right;font-weight:bold>DueAmt</td>
+
+                                    <td style=text-align:right;>{{dueAmt}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        @*<div class="modal-footer">
+                <button type="button" id="cmd" ng-click="savePdfSample()" class="btn btn-danger">Download PDF</button>
+
+            </div>*@
+    </div>
+
+
+    @*<div id="editor"></div>*@
+</body>
+</html>

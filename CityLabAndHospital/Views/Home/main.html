@@ -1,0 +1,197 @@
+﻿<div id="TestCtrl" style="background-color:#00162A;margin-top:5px;height:650px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center;color:white">
+                <input type="checkbox" ng_model="chkprofile" ng-change="showProfile()" />Check Profile
+                <select ng_model="cmbprofile" style="width:150px" ng-change="showData()" ng-options="a for a in profile">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" style="height:15px">
+            <div class="col-md-6">
+                <label class="col-md-3" style="text-align:right;color:white">Vou No:</label>
+                <input class="col-md-2" type="text" id="billNo" ng-model="billNo" readonly placeholder="Auto" />
+                <label class="col-md-2" style="text-align:right;color:white">Bill Date:</label>
+                <input class="col-md-4" type="text" id="billDate" ng-model="billDate" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="col-md-3" style="text-align:right;color:white">Dr.ID:</label>
+                <input class="col-md-3" type="text" ng-model="selectedvalues" ng-change="selectedvalues" />
+            </div>
+        </div>
+        <br />
+
+        @*point*@
+
+        <div>
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Patient Name:</label>
+                    <input class="col-md-8" type="text" id="patientName" ng-model="patientName" />
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-3" style="color:white;text-align:right">Dr.Name:</label>
+                    <select class="col-md-7" type="text" id="drName" ng-options="s for s in drName" ng-model="selitem" ng-change="getselectval()">
+                        <option value="">--Select A Name--</option>
+                    </select>
+
+                    @*<input class="col-md-7" type="text" id="drName" ng-model="drName" />*@
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Guardian:</label>
+                    <input class="col-md-8" type="text" id="guardianName" ng-model="guardianName" />
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Qualification:</label>
+                    <input class="col-md-7" type="text" id="qualification" ng-model="qualification" ng-change="qualification" />
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div>
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Address:</label>
+                    <input class="col-md-8" id="address" ng-model="address" />
+
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-3" style=" color:white;text-align:right">Address:</label>
+                    <input class="col-md-7" id="address1" ng-model="address1" ng-change="address1" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Phone:</label>
+                    <input class="col-md-8" type="text" id="phoneNo" ng-model="phoneNo" />
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-3" style="color:white;text-align:right">Cell No:</label>
+                    <input class="col-md-7" type="text" id="phoneNo1" ng-model="mobile1" ng-change="mobile1" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div class="row" style="height:15px">
+                <div class="col-md-6">
+                    <label class="col-md-3" style="text-align:right;color:white">Gender:</label>
+                    <select id="gender" class="col-md-3" style="height:26px" ng-model="gender">
+                        <option value="">--Select--</option>
+                        <option value="Male">Male</option>
+                        <option value="Femal">Femal</option>
+                        <option value="Femal">Baby</option>
+                        <option value="Femal">Others</option>
+                    </select>
+                    <label class="col-md-2" style="text-align:right;color:white">Age:</label>
+                    <input class="col-md-3" type="text" id="birthDate" ng-model="birthDate" />
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-3" style="color:white;text-align:right">Delevery Date:</label>
+                    <input class="col-md-4" type="date" id="deliveryDate" ng-model="deliveryDate" />
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <hr style="background-color:white" />
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-2 test-name-section-left">
+                    <div>
+                        <table id="mytable">
+                            <thead>
+                                <tr style="font-size:16px; font-weight:bold; color:#c0392b;background-color:white">
+                                    <th id="testname-in-table" style="text-align:center">Test Name</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="test in allTest" id="testname-list">
+                                <tr>
+                                    <td width="200"><a href="#" ng-click="AddSingleToArray(test.testName);" style="display:block;width:100%;color:white;text-align:center">{{test.testName}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-7" style="height:250px;overflow:scroll;background-color:white">
+                    <div>
+                        <table class="table table-sm table-striped" style="border:1px" id="Details">
+                            <thead>
+                                <tr>
+                                    <th>Sl No</th>
+                                    <th>Test Name</th>
+                                    <th>Test Group</th>
+                                    <th>Test Fee</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="a in todos" style="padding:5px;height:10px">
+                                    <td>{{a.slNo}}</td>
+                                    <td>{{a.testName}}</td>
+                                    <td>{{a.testGroup}}</td>
+                                    <td>{{a.amount}}</td>
+                                    <td><input type="button" style="background-color:#00162A" value="Remove" id="remove" class="btn btn-success" ng-click="removeLineItem(a.slNo)" /></td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row" style="height:25px">
+                        <label class="col-md-5" style="color:white;text-align:right">Total Amt:</label>
+                        <input class="col-md-6" type="text" id="totalAmt" ng-model="totalAmt" />
+                    </div>
+                    <br />
+                    <div class="row" style="height:25px">
+                        <label class="col-md-5" style="color:white;text-align:right">Discount %:</label>
+                        <input class="col-md-6" type="text" id="discount" ng-model="discount" ng-change="Totalling()" />
+                    </div>
+                    <br />
+                    <div class="row" style="height:25px">
+                        <label class="col-md-5" style="color:white;text-align:right">Net Amt:</label>
+                        <input class="col-md-6" type="text" id="netAmt" ng-model="netAmt" />
+                    </div>
+                    <br />
+                    <div class="row" style="height:25px">
+                        <label class="col-md-5" style="color:white;text-align:right">Paid Amt:</label>
+                        <input class="col-md-6" type="text" id="paidAmt" ng-model="paidAmt" ng-change="Totalling()" />
+                    </div>
+                    <br />
+                    <div class="row" style="height:25px">
+                        <label class="col-md-5" style="color:white;text-align:right">Due Amt:</label>
+                        <input class="col-md-6" type="text" id="dueAmt" ng-model="dueAmt" />
+                    </div>
+                    <br />
+
+                    <div class="container">
+                        <div class="row" style="margin-left:20px">
+                            <input type="button" value="Save" id="save" class="btn btn-success btn-sm" ng-model="save" ng-click="saveItems()" /> &amp;
+                            <input type="button" value="Delete" id="delete" class="btn btn-danger btn-sm" ng-model="delete" ng-click="deleteItems()" />&amp;
+                            <input type="button" value="Update" id="update" class="btn btn-info btn-sm" ng-model="update" ng-click="updateItems()" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

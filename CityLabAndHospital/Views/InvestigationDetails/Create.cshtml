@@ -1,0 +1,81 @@
+﻿@model CityLabAndHospital.Models.Db.InvestigationDetails
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body >
+
+<h4>InvestigationDetails</h4>
+<hr />
+
+<div class="row" style="margin-left:5px;background-color:#003366;color:white" >
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VoucherNo" class="control-label"></label>
+                <input asp-for="VoucherNo" class="form-control" />
+                <span asp-validation-for="VoucherNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlNo" class="control-label"></label>
+                <input asp-for="SlNo" class="form-control" />
+                <span asp-validation-for="SlNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TestName" class="control-label"></label>
+                <select asp-for="TestName" class ="form-control" asp-items="ViewBag.TestName"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TestGroup" class="control-label"></label>
+                <input asp-for="TestGroup" class="form-control" />
+                <span asp-validation-for="TestGroup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReportGroup" class="control-label"></label>
+                <input asp-for="ReportGroup" class="form-control" />
+                <span asp-validation-for="ReportGroup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fee" class="control-label"></label>
+                <input asp-for="Fee" class="form-control" />
+                <span asp-validation-for="Fee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Commision" class="control-label"></label>
+                <input asp-for="Commision" class="form-control" />
+                <span asp-validation-for="Commision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit"  value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-danger" asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
